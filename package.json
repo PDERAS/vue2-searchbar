@@ -1,0 +1,18 @@
+{
+  "name": "@pderas/vue2-searchbar",
+  "version": "1.0.0",
+  "description": "A simple search bar that allows delayed searching and integration with vuex store functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "searchbar",
+    "pderas",
+    "search"
+  ],
+  "author": "David Buss",
+  "license": "MIT"
+}
