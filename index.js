@@ -1,4 +1,4 @@
-import Searchbar from './components/Searchbar.vue';
+import Searchbar from './components/Searchbar';
 import options from './options';
 
 export { options };
@@ -10,6 +10,6 @@ export default {
             });
         }
 
-        Vue.component('vue-searchbar', Searchbar);
+        Vue.component('searchbar', Searchbar);
     }
 }

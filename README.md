@@ -5,16 +5,16 @@ A vue.js component searchbar. Allows for delayed or on key press search and can 
 Vue searchbar is built as a vue plugin. It can be initialized just as the Vue documentation states.
 
 ```javascript
-import VueSearchbar from 'vue2-searchbar';
+import Searchbar from '@pderas/vue2-searchbar';
 
-Vue.use(VueSearchbar);
+Vue.use(Searchbar);
 ```
 ## Usage
 
 #### Creation
 A search bar can be created simply by adding the component to a file and passing it a search function. This function will run either on key press or after a delay depending on what props or global options have been set.
 ```javascript
-<vue-searchbar :on-search="searchFunc" />
+<searchbar :on-search="searchFunc" />
 
 export default {
     methods: {
