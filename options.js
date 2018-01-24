@@ -1,5 +1,5 @@
 export default {
-    iconSide: 'left',
-    searchWhen: 'onDelay',
-    timeoutDelay: 1000
+    iconSide:       'left',
+    searchWhen:     'onDelay',
+    timeoutDelay:   1000
 }

@@ -23,7 +23,8 @@
 
             /* The variable that determines if the search is loading */
             loading: {
-                type: Boolean
+                type: Boolean,
+                default: false
             },
 
             /* The function to run on search */
@@ -32,10 +33,16 @@
                 required: true
             },
 
+            /* The commit function if integrating with vuex */
+            searchLocation: {
+                type: String,
+                default: null
+            },
+
             /* How frequently the search runs */
             searchWhen: {
                 type: String,
-                default: () => { defaults.searchWhen },
+                default: () => defaults.searchWhen,
                 validator(value) {
                     var types = [
                         'onDelay',
@@ -49,15 +56,10 @@
                 }
             },
 
-            /* The commit function if integrating with vuex */
-            searchLocation: {
-                type: String,
-                required: true
-            },
-
             /* Custom styling for searchbar */
             theme: {
                 type: String,
+                default: null
             },
 
             /* The delay on search when searchWhen set to onDelay */
@@ -69,11 +71,9 @@
 
         data() {
             return {
-                expanded: false,
-
-                currentSearch: null,
-
-                timeout: null
+                currentSearch:  null,
+                expanded:       false,
+                timeout:        null
             }
         },
 
@@ -87,21 +87,20 @@
         },
 
         methods: {
-            searchEnter() {
-                if (this.searchWhen != 'onEnter') { return; }
-                this.search();
-            },
-
             delayedSearch() {
-                var _this = this;
                 if (this.searchWhen != 'onDelay') { return; }
 
                 if (this.timeout) {
                     clearTimeout(this.timeout);
                 }
-                this.timeout = setTimeout(function() {
-                    _this.search();
+                this.timeout = setTimeout(() => {
+                    this.search();
                 }, this.timeoutDelay);
+            },
+
+            searchEnter() {
+                if (this.searchWhen != 'onEnter') { return; }
+                this.search();
             },
 
             search() {
