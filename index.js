@@ -1,7 +1,7 @@
 import Searchbar from './components/Searchbar';
 import options from './options';
 
-export options;
+export { options };
 
 function install (Vue, globalOptions) {
     if (globalOptions) {
