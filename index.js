@@ -1,15 +1,16 @@
 import Searchbar from './components/Searchbar';
 import options from './options';
 
-export { options };
-export default {
-    install (Vue, globalOptions) {
-        if (globalOptions) {
-            Object.keys(globalOptions).map(function(key) {
-                options[key] = gloablOptions[key];
-            });
-        }
+export options;
 
-        Vue.component('searchbar', Searchbar);
+function install (Vue, globalOptions) {
+    if (globalOptions) {
+        Object.keys(globalOptions).map(function(key) {
+            options[key] = gloablOptions[key];
+        });
     }
+
+    Vue.component('searchbar', Searchbar);
 }
+
+export default install;
