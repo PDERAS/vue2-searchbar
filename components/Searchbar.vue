@@ -1,9 +1,9 @@
 <template>
-    <div class="searchbar-wrapper" :class="{ expanded: expanded }" :style="theme">
+    <div class="searchbar-wrapper" :style="theme">
         <div class="input-icon" :class="iconSide">
             <i class="fa fa-search" aria-hidden="true" v-if="!loading"></i>
             <i class="fa fa-spinner fa-pulse fa-fw loader" aria-hidden="true" v-else></i>
-            <input v-model="currentSearch" type="text" placeholder="Search..." @keyup.enter="searchEnter" @focus="expanded = true" @blur="expanded = false" />
+            <input v-model="currentSearch" type="text" placeholder="Search..." @keyup.enter="searchEnter" />
         </div>
     </div>
 </template>
@@ -72,7 +72,6 @@
         data() {
             return {
                 currentSearch:  null,
-                expanded:       false,
                 timeout:        null
             }
         },
@@ -118,19 +117,11 @@ $expanded-width: 300px;
 $border-radius: 0px;
 
 .searchbar-wrapper {
-
-    display: inline-block;
-
-    /* Transition */
-    -webkit-transition: width 0.5s ease-out;
-       -moz-transition: width 0.5s ease-out;
-         -o-transition: width 0.5s ease-out;
-            transition: width 0.5s ease-out;
-    width: $base-width;
-
-    &.expanded {
-        width: $expanded-width;
-    }
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
 
     .input-icon {
         position: relative;
@@ -167,10 +158,10 @@ $border-radius: 0px;
                     box-shadow: none;
 
             /* Transition */
-            -webkit-transition: width 0.5s ease-out;
-               -moz-transition: width 0.5s ease-out;
-                 -o-transition: width 0.5s ease-out;
-                    transition: width 0.5s ease-out;
+            -webkit-transition: 0.3s ease-out;
+               -moz-transition: 0.3s ease-out;
+                 -o-transition: 0.3s ease-out;
+                    transition: 0.3s ease-out;
 
             background-color: $searchbar-bg-color;
             display: block;
