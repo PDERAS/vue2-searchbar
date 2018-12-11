@@ -30,6 +30,6 @@ export default {
 | iconSide    | 'left'    | Determines what side the search icon is on.                     |
 | searchWhen  | 'onDelay' | If the search should run after defined timeout or on key press. |
 | timoutDelay | 1000      | The amount of time before a new search will occur.              |
-
+| value       | null      | optional value field for use with v-model                       |
 # License
 This project is covered under the MIT License. Feel free to use it wherever you like.

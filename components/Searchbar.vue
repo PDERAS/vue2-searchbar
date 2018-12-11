@@ -15,6 +15,10 @@
         name: 'searchbar',
 
         props: {
+            value: {
+                type: String,
+                default: null
+            },
             /* The side to show the search icon on */
             iconSide: {
                 type: String,
@@ -44,15 +48,10 @@
                 type: String,
                 default: () => defaults.searchWhen,
                 validator(value) {
-                    var types = [
+                    return [
                         'onDelay',
                         'onEnter'
-                    ];
-                    if (types.indexOf(value) > -1) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    ].includes(value)
                 }
             },
 
@@ -69,9 +68,21 @@
             }
         },
 
+        computed: {
+            currentSearch: {
+                get() {
+                    return this.value || this.internalSearch
+                },
+                set(val) {
+                    this.internalSearch = val
+                    this.$emit('input', val)
+                }
+            }
+        },
+
         data() {
             return {
-                currentSearch:  null,
+                internalSearch:  null,
                 timeout:        null
             }
         },
