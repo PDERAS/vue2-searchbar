@@ -6,7 +6,7 @@ export { options };
 function install (Vue, globalOptions) {
     if (globalOptions) {
         Object.keys(globalOptions).map(function(key) {
-            options[key] = gloablOptions[key];
+            options[key] = globalOptions[key];
         });
     }
 
