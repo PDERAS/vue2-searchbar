@@ -22,7 +22,9 @@
             /* The side to show the search icon on */
             iconSide: {
                 type: String,
-                default: () => defaults.iconSide
+                default: function() {
+                    return defaults.iconSide;
+                }
             },
 
             /* The variable that determines if the search is loading */
@@ -46,12 +48,14 @@
             /* How frequently the search runs */
             searchWhen: {
                 type: String,
-                default: () => defaults.searchWhen,
-                validator(value) {
+                default: function() {
+                    return defaults.searchWhen;
+                },
+                validator: function(value) {
                     return [
                         'onDelay',
                         'onEnter'
-                    ].includes(value)
+                    ].includes(value);
                 }
             },
 
@@ -64,23 +68,25 @@
             /* The delay on search when searchWhen set to onDelay */
             timeoutDelay: {
                 type: Number,
-                default: () => defaults.timeoutDelay
+                default: function() {
+                    return defaults.timeoutDelay;
+                }
             }
         },
 
         computed: {
             currentSearch: {
-                get() {
-                    return this.value || this.internalSearch
+                get: function() {
+                    return this.value || this.internalSearch;
                 },
-                set(val) {
-                    this.internalSearch = val
-                    this.$emit('input', val)
+                set: function(val) {
+                    this.internalSearch = val;
+                    this.$emit('input', val);
                 }
             }
         },
 
-        data() {
+        data: function() {
             return {
                 internalSearch:  null,
                 timeout:        null
@@ -88,7 +94,7 @@
         },
 
         watch: {
-            currentSearch() {
+            currentSearch: function() {
                 if (this.searchLocation) {
                     this.$store.commit(this.searchLocation, this.currentSearch);
                 }
@@ -97,23 +103,27 @@
         },
 
         methods: {
-            delayedSearch() {
-                if (this.searchWhen != 'onDelay') { return; }
+            delayedSearch: function() {
+                if (this.searchWhen != 'onDelay') {
+                    return;
+                }
 
                 if (this.timeout) {
                     clearTimeout(this.timeout);
                 }
-                this.timeout = setTimeout(() => {
+                this.timeout = setTimeout(function() {
                     this.search();
                 }, this.timeoutDelay);
             },
 
-            searchEnter() {
-                if (this.searchWhen != 'onEnter') { return; }
+            searchEnter: function() {
+                if (this.searchWhen != 'onEnter') {
+                    return;
+                }
                 this.search();
             },
 
-            search() {
+            search: function() {
                 this.onSearch(this.currentSearch);
             }
         }
