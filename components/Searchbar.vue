@@ -111,8 +111,10 @@
                 if (this.timeout) {
                     clearTimeout(this.timeout);
                 }
+
+                let _this = this;
                 this.timeout = setTimeout(function() {
-                    this.search();
+                    _this.search();
                 }, this.timeoutDelay);
             },
 
