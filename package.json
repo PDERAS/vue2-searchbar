@@ -13,6 +13,14 @@
     "pderas",
     "search"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PDERAS/vue2-searchbar.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "David Buss",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/PDERAS/vue2-searchbar#readme"
 }
