@@ -3,7 +3,7 @@
         <div class="input-icon" :class="iconSide">
             <i class="fa fa-search" aria-hidden="true" v-if="!loading"></i>
             <i class="fa fa-spinner fa-pulse fa-fw loader" aria-hidden="true" v-else></i>
-            <input v-model="currentSearch" type="text" placeholder="Search..." @keyup.enter="searchEnter" />
+            <input v-model="currentSearch" type="text" :placeholder="placeholder" @keyup.enter="searchEnter" />
         </div>
     </div>
 </template>
@@ -37,6 +37,12 @@
             onSearch: {
                 type: Function,
                 required: true
+            },
+
+            /* Placeholder text displayed in searchbar */
+            placeholder: {
+                type: String,
+                default: 'Search...'
             },
 
             /* The commit function if integrating with vuex */
